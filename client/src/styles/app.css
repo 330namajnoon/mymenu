@@ -6,8 +6,8 @@
 
 .paszamine {
     position: relative;
-    width: 430px;
-    height: 930px;
+    /* width: 430px;
+    height: 930px; */
     /* background-image: url(); */
     background-color: aquamarine;
     background-image: url(../images/home.png);
@@ -20,4 +20,8 @@
     background: rgba(255, 255, 255, 0.15);
     background-blend-mode: luminosity;
     position: absolute;
+}
+.menu-item {
+    width: 75px;
+    height: 75px;
 }
