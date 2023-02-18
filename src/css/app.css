@@ -1,0 +1,13 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.loading_gif {
+    position: absolute;
+    z-index: 10000;
+    width: 40vw;
+    left: 30%;
+    height: 40vw;
+}
+
