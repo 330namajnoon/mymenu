@@ -256,10 +256,29 @@ app.post("/guardar_perfil", imageUload().single("image") ? imageUload().single("
         }
         switch (req.body.image) {
             case "false":
-
+                fs.readFile("./database/recetas.json",(err,data) => {
+                    if(err) throw err;
+                    let recetas = JSON.parse(data.toString());
+                    for (let index = 0; index < recetas.length; index++) {
+                        if(recetas[index].perfil.id === mydata.id) recetas[index].perfil = mydata;
+                    }
+                    fs.writeFile("./database/recetas.json",JSON.stringify(recetas),(err)=> {
+                        console.log("perfiles de recetas se han cambiado");
+                    })
+                })
                 break;
 
             default:
+                fs.readFile("./database/recetas.json",(err,data) => {
+                    if(err) throw err;
+                    let recetas = JSON.parse(data.toString());
+                    for (let index = 0; index < recetas.length; index++) {
+                        if(recetas[index].perfil.id === mydata.id) recetas[index].perfil = mydata;
+                    }
+                    fs.writeFile("./database/recetas.json",JSON.stringify(recetas),(err)=> {
+                        console.log("perfiles de recetas se han cambiado");
+                    })
+                })
                 fs.rename(req.file.path, "../public/images/" + imagename, (err) => {
                     if (err) throw err;
                     console.log("la foto se ha guardado");
