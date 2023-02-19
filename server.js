@@ -84,7 +84,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 // app.use("/node_modules",express.static(__dirname + "/node_modules"));
 app.use(express.static(pdp));
-app.use(cors())
+// app.use(cors())
 const server = http.createServer(app);
 const io = new Server(server,{
     cors:{
@@ -201,6 +201,10 @@ app.post("/guardar_receta_I",imageUload().single('image'),(req,res)=> {
                     recetas[index] = receta;
                 }
             }
+            fs.rename(req.file.path,"./build/images/"+newImageName,(err)=> {
+                if(err) throw err;
+                console.log("saved name");
+            })
         }
         fs.writeFile("./database/recetas.json",JSON.stringify(recetas),(err)=> {
             if(err) throw err;
